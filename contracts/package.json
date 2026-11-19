@@ -1,0 +1,22 @@
+{
+  "name": "@sqrjobs/contracts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "hardhat build",
+    "test": "hardhat test",
+    "abi": "node scripts/export-abi.mjs",
+    "deploy:bsc": "hardhat ignition deploy ignition/modules/SqrJobs.ts --network bsc --verify"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox-viem": "^5.0.7",
+    "@types/node": "^26.6.6",
+    "forge-std": "github:foundry-rs/forge-std#v1.9.7",
+    "hardhat": "^3.22.0",
+    "typescript": "^7.0.2",
+    "viem": "^2.58.1"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.6.1"
+  }
+}
