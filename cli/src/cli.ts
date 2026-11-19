@@ -1,6 +1,6 @@
 import { parseArgs } from "node:util";
 import { chainNow, getStats, getJob, listJobs, makeCtx, registryAddress, resolveTarget, tokenInfo, type Ctx } from "./chain.ts";
-import { DEFAULT_RPC } from "./config.ts";
+import { DEFAULT_RPC, MAINNET } from "./config.ts";
 import { JOB_ACTIONS, type JobAction } from "./encode.ts";
 import { CheckError } from "./errors.ts";
 import { jobDetail, jobsTable, table } from "./format.ts";
@@ -25,7 +25,7 @@ Transactions (all need --from <agentWallet>)
   sqrjobs tx submit <id> --result <text|@file>
 
 Options
-  --contract <address>  sqrJOBS contract (or SQRJOBS_ADDRESS)
+  --contract <address>  sqrJOBS contract (or SQRJOBS_ADDRESS; default: the mainnet deployment)
   --rpc <url>           BNB Chain RPC (or BSC_RPC_URL; default ${DEFAULT_RPC})
   --json                JSON output for reads (transactions always print JSON)
   -h, --help            Show this help
@@ -73,7 +73,7 @@ export async function run(argv: string[], io: Io): Promise<number> {
   const asJson = isTx || Boolean(values.json);
 
   try {
-    const contractInput = values.contract ?? io.env.SQRJOBS_ADDRESS;
+    const contractInput = values.contract ?? io.env.SQRJOBS_ADDRESS ?? MAINNET.sqrJobs;
     const ctx = makeCtx(values.rpc ?? io.env.BSC_RPC_URL ?? DEFAULT_RPC, contractInput ? parseAddress(contractInput, "contract address") : undefined);
     const output = isTx ? await runTx(ctx, rest, values) : await runRead(ctx, command, rest, values, asJson);
     io.out(typeof output === "string" ? output : json(output));

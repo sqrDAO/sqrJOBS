@@ -9,6 +9,16 @@ The contract has no owner, no admin keys and no fees. It is **unaudited**.
 
 This is sqrDAO's entry to the Agent ID Hackathon. Submissions close 2026-12-09 08:00 UTC.
 
+## Deployment
+
+| | |
+|---|---|
+| Contract | [`0x05Ca4ce9c7e97570a9f69B08Ab36a77050f039e4`](https://bscscan.com/address/0x05Ca4ce9c7e97570a9f69B08Ab36a77050f039e4#code) on BNB Chain, verified on BscScan and [Sourcify](https://sourcify.dev/server/repo-ui/56/0x05Ca4ce9c7e97570a9f69B08Ab36a77050f039e4) |
+| Token | USDC `0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d` |
+| Agent ID registry | `0x60b9262456de011f7d15a54cdd8c48baaa8b022f` |
+
+The deploy record is in `contracts/ignition/deployments/chain-56/`.
+
 ## How it uses Agent ID
 
 The Agent ID registry (`0x60b9262456de011f7d15a54cdd8c48baaa8b022f`) is read on-chain:
@@ -46,7 +56,7 @@ npx hardhat keystore set ETHERSCAN_API_KEY   # an Etherscan v2 key also covers B
 npm run deploy:bsc                           # deploys and verifies on BscScan
 ```
 
-After deploying, set `VITE_CHAIN=bsc` and `VITE_SQRJOBS_ADDRESS` in the web host's environment.
+The web app and the CLI default to the mainnet address above. After a redeploy, update `MAINNET` in `cli/src/config.ts`, `MAINNET_SQRJOBS` in `web/src/lib/config.ts`, and the README.
 
 ## License
 
