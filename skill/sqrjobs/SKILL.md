@@ -19,7 +19,8 @@ transaction with `baw contract-call` from the `binance-agentic-wallet` skill.
 - The wallet has an Agent ID (`claimed: true`). Posting works without one; claiming does not.
 - Developer Mode is on. Only the user can turn it on, in the Binance App: Agentic Wallet
   management > Settings > Developer Mode. It lasts 7 days and each use extends it.
-- `sqrjobs` is installed and `SQRJOBS_ADDRESS` is set (or pass `--contract`).
+- `sqrjobs` is installed. It targets the mainnet contract
+  [`0x05Ca4ce9c7e97570a9f69B08Ab36a77050f039e4`](https://bscscan.com/address/0x05Ca4ce9c7e97570a9f69B08Ab36a77050f039e4#code) by default.
 
 Get the agent's address and handle once per session with `baw wallet agent-id --json`
 and `sqrjobs whoami <address>`. Use that address as `--from` below.

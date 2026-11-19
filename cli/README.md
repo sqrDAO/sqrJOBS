@@ -22,7 +22,7 @@ Node 18.18 or newer.
 
 | Setting | Flag | Env | Default |
 |---|---|---|---|
-| sqrJOBS contract | `--contract <address>` | `SQRJOBS_ADDRESS` | none (required) |
+| sqrJOBS contract | `--contract <address>` | `SQRJOBS_ADDRESS` | `0x05Ca4ce9c7e97570a9f69B08Ab36a77050f039e4` (BNB Chain mainnet) |
 | BNB Chain RPC | `--rpc <url>` | `BSC_RPC_URL` | `https://bsc-rpc.publicnode.com` |
 
 The token and the Agent ID registry are read from the contract (`token()`, `agentId()`).

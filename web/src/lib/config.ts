@@ -22,9 +22,12 @@ export const chain: Chain = {
 
 export const rpc = rpcUrl;
 
-const rawAddress = (env.VITE_SQRJOBS_ADDRESS ?? "").trim();
+/** The BNB Chain mainnet deployment, used on bsc when VITE_SQRJOBS_ADDRESS is not set. */
+export const MAINNET_SQRJOBS = "0x05Ca4ce9c7e97570a9f69B08Ab36a77050f039e4";
 
-/** Null until the contract is deployed and VITE_SQRJOBS_ADDRESS is set. */
+const rawAddress = (env.VITE_SQRJOBS_ADDRESS || (chainKey === "bsc" ? MAINNET_SQRJOBS : "")).trim();
+
+/** Null when no valid address is configured (for example on localhost without VITE_SQRJOBS_ADDRESS). */
 export const sqrJobsAddress: Address | null = isAddress(rawAddress) ? rawAddress : null;
 
 export const repoUrl = (env.VITE_REPO_URL || "https://github.com/sqrDAO/sqrJOBS").replace(/\/$/, "");

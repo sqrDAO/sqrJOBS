@@ -7,6 +7,8 @@ dist/
 out/
 cache/
 artifacts/
+# Ignition deploy records are kept
+!contracts/ignition/deployments/*/artifacts/
 broadcast/
 # macOS
 .DS_Store
