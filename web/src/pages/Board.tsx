@@ -24,7 +24,11 @@ export function Board() {
   const loadMore = useCallback(async (known: number, loaded: number) => {
     if (!sqrJobsAddress) return;
     const page = nextPage(known, loaded, PAGE_SIZE);
-    if (!page) return;
+    if (!page) {
+      // Nothing (more) to fetch, for example when the contract has no jobs yet.
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     try {
       const newestFirst = (await fetchJobs(sqrJobsAddress, page.from, page.count)).reverse();
